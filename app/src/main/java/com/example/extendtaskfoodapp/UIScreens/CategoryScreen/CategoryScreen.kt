@@ -1,6 +1,5 @@
 package com.example.extendtaskfoodapp.UIScreens
 
-import android.widget.Space
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
@@ -15,10 +14,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import coil.compose.rememberAsyncImagePainter
-import coil.compose.rememberImagePainter
-import com.example.extendtaskfoodapp.datasource.viewmodel.CategoryViewModel
-import com.example.extendtaskfoodapp.model.Category
-import org.koin.android.compat.ViewModelCompat
+import com.example.domain.model.Category
+import com.example.extendtaskfoodapp.UIScreens.CategoryScreen.CategoryViewModel
 
 @Composable
 fun CategoryScreen(
@@ -27,10 +24,10 @@ fun CategoryScreen(
 ){
 //    val viewModel = ViewModelCompat.getViewModel<CategoryViewModel>()
 //    val viewModel : CategoryViewModel by viewModel()
-    val listOfCategories by remember { viewModel.listOfCategories }
+    val listOfCategories by remember { viewModel.categories }
 
     LazyColumn{
-        items(listOfCategories){ item ->
+        items(listOfCategories.data!!.categories){ item ->
             SingleCategoryItem(category = item){ category ->
                  onItemClicked(category)
             }

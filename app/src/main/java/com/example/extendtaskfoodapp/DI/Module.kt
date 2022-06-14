@@ -1,15 +1,13 @@
 package com.example.extendtaskfoodapp.DI
 
-import android.system.Os.bind
 import com.example.extendtaskfoodapp.datasource.CategoryRepository
-import com.example.extendtaskfoodapp.datasource.ICategoryRepository
 import com.example.extendtaskfoodapp.datasource.repository.DishRepository
 import com.example.extendtaskfoodapp.datasource.repository.IDishRepository
 import com.example.extendtaskfoodapp.datasource.usecase.GetCategoriesUseCase
 import com.example.extendtaskfoodapp.datasource.usecase.GetDishUseCase
 import com.example.extendtaskfoodapp.datasource.usecase.IDishesUseCase
 import com.example.extendtaskfoodapp.datasource.usecase.IGetCategoriesUseCase
-import com.example.extendtaskfoodapp.datasource.viewmodel.CategoryViewModel
+import com.example.extendtaskfoodapp.UIScreens.CategoryScreen.CategoryViewModel
 import com.example.extendtaskfoodapp.datasource.viewmodel.DishViewModel
 import com.example.extendtaskfoodapp.serviece.ICategoryService
 import org.koin.androidx.viewmodel.dsl.viewModel
@@ -29,7 +27,7 @@ val module = module {
             .create(ICategoryService::class.java)
     }
 
-    single <ICategoryRepository>{
+    single{
         CategoryRepository(get())
     }
 

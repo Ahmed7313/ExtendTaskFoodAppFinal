@@ -37,9 +37,7 @@ import com.example.extendtaskfoodapp.ui.theme.*
 import com.example.myapplication.ui.theme.LoginAppComposeSmaatTheme
 
 @Composable
-fun RegisterScreen(modifier: Modifier){
-
-
+fun RegisterScreen(modifier: Modifier, navController: NavController){
     Surface() {
         Column(modifier = Modifier
             .fillMaxSize()
@@ -71,7 +69,7 @@ fun RegisterScreen(modifier: Modifier){
                         PasswordField()
                         TermsAndConditionsText()
                         RegisterButton ("Register",
-                            navController =rememberNavController())
+                            navController = navController)
                         LoginText()
                     }
                 }
@@ -84,7 +82,7 @@ fun RegisterScreen(modifier: Modifier){
 fun RegisterButton (text : String, navController : NavController){
     OutlinedButton(onClick =
     {
-        //navController.navigate(route = Screen.CategoryScreen.route)
+        navController.navigate(route = Screen.LoginView.route)
     },
         modifier = Modifier
             .fillMaxWidth(1f)
@@ -293,6 +291,6 @@ fun LoginText(){
 @Composable
 fun DefaultPreviewRegister() {
     LoginAppComposeSmaatTheme {
-        RegisterScreen(modifier = Modifier.fillMaxSize())
+       // RegisterScreen(modifier = Modifier.fillMaxSize())
     }
     }

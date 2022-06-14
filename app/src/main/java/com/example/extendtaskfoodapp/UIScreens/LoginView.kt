@@ -23,7 +23,9 @@ import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.example.extendtaskfoodapp.R
+import com.example.extendtaskfoodapp.navigation.Screen
 import com.example.extendtaskfoodapp.ui.theme.*
 import com.example.myapplication.ui.theme.LoginAppComposeSmaatTheme
 
@@ -37,7 +39,7 @@ fun Greeting2(name: String) {
 @Composable
 fun DefaultPreview2() {
     LoginAppComposeSmaatTheme {
-        LoginScreen(modifier = Modifier.fillMaxSize())
+        //LoginScreen(modifier = Modifier.fillMaxSize())
     }
 }
 
@@ -148,8 +150,10 @@ fun OTPLogin(){
 }
 
 @Composable
-fun LoginButton (text : String){
-    OutlinedButton(onClick = { /*TODO*/ },
+fun LoginButton (text : String, navController: NavController){
+    OutlinedButton(onClick = {
+        navController.navigate(route = Screen.CategoryScreen.route)
+    },
         modifier = Modifier
             .fillMaxWidth(1f)
             .height(100.dp)
@@ -167,7 +171,7 @@ fun LoginButton (text : String){
 }
 
 @Composable
-fun LoginScreen(modifier: Modifier){
+fun LoginScreen(modifier: Modifier, navController: NavController){
 
     Column (modifier =
     Modifier
@@ -194,7 +198,8 @@ fun LoginScreen(modifier: Modifier){
                 Column (horizontalAlignment = Alignment.CenterHorizontally){
                     LoginEntryText()
                     PasswordField()
-                    LoginButton ("Login")
+                    LoginButton ("Login",
+                        navController = navController)
                     OTPLogin()
                 }
             }

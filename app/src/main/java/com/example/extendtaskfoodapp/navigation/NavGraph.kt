@@ -19,7 +19,7 @@ import com.example.loginappcomposesmaat.views.RegisterScreen
 @Composable
 fun SetupNavGraph(navController: NavHostController) {
     NavHost(navController = navController , 
-        startDestination = Screen.CategoryScreen.route ){
+        startDestination = Screen.RegisterView.route ){
 
         composable(route = Screen.CategoryScreen.route){
             CategoryScreen(){ category ->
@@ -37,11 +37,13 @@ fun SetupNavGraph(navController: NavHostController) {
         }
         
         composable(route = Screen.RegisterView.route){
-            RegisterScreen(modifier = Modifier.wrapContentHeight().fillMaxSize())
+            RegisterScreen(modifier = Modifier.wrapContentHeight().fillMaxSize()
+                , navController)
         }
         
         composable(route = Screen.LoginView.route){
-            LoginScreen(modifier = Modifier.fillMaxSize())
+            LoginScreen(modifier = Modifier.fillMaxSize(),
+                navController)
         }
     }
 }
